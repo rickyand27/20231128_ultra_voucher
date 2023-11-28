@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Case 1</title>
+  </head>
+  <body>
+    <!--
+    cara mengerjakan: 
+    1. pisahin dulu semua kata 
+    2. lalu urutin sesuai abjad
+    3. masukin ke dalam groups array sesuai dengan urutan huruf yg sama
+    4. lakukan perulangan dari groups masukin ke result array 
+    5. kembalikan result
+    -->
+    <script>
+      function makeAnagrams(words) {
+        let result = [];
+        let groups = {};
+
+        for (let word of words) {
+          let sortedWord = word.split("").sort().join("");
+          if (groups[sortedWord]) {
+            groups[sortedWord].push(word);
+          } else {
+            groups[sortedWord] = [word];
+          }
+        }
+
+        for (let group in groups) {
+          result.push(groups[group]);
+        }
+
+        return result;
+      }
+
+      let arrofstr = ["cook", "save", "taste", "aves", "vase", "state", "map"];
+
+      let resultArray = makeAnagrams(arrofstr);
+
+      console.log(resultArray);
+    </script>
+  </body>
+</html>
